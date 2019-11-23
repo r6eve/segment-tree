@@ -65,11 +65,11 @@
   [^SegmentTree s a b ident f]
   (letfn [(doit [l r k]
             (if (or (<= r a) (<= b l))
-                ident
-                (if (and (<= a l) (<= r b))
-                    (aget (.seg s) k)
-                    (let [m (quot (+ l r) 2)]
-                      (f (doit l m (left k)) (doit m r (right k)))))))]
+              ident
+              (if (and (<= a l) (<= r b))
+                (aget (.seg s) k)
+                (let [m (quot (+ l r) 2)]
+                  (f (doit l m (left k)) (doit m r (right k)))))))]
     (doit 0 (.size s) 0)))
 
 (defn find-min
