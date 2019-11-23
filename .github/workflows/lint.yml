@@ -1,0 +1,12 @@
+name: lint
+
+on: [push, pull_request]
+
+jobs:
+  lint-by-clj-kondo:
+    runs-on: ubuntu-18.04
+    container: borkdude/clj-kondo
+    steps:
+    - uses: actions/checkout@v1
+    - name: Check statically
+      run: clj-kondo --lint src test || true
