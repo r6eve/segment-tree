@@ -13,4 +13,6 @@
              :coverage {:plugins [[lein-cloverage "1.1.1"]]}
              :clj-async-profiler {:dependencies [[com.clojure-goes-fast/clj-async-profiler "0.4.0"]]
                                   :jvm-opts ["-Djdk.attach.allowAttachSelf"]}}
-  :repl-options {:init-ns segment-tree.core})
+  :repl-options {:init-ns segment-tree.core}
+  :repositories [["release" {:url "https://clojars.org/repo"
+                             :creds :gpg}]])
