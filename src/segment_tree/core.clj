@@ -33,9 +33,9 @@
   "Replace `i` elements by `x`."
   ([^SegmentTree s i x] (update! s i x min))
   ([^SegmentTree s i x min']
-   (let [i (dec (+ i (.size s)))]
-     (aset (.seg s) i x)
-     (loop [i i]
+   (let [bottom-i (dec (+ i (.size s)))]
+     (aset (.seg s) bottom-i x)
+     (loop [i bottom-i]
        (if (<= i 0)
          s
          (let [p (parent i)
@@ -48,9 +48,9 @@
   "Modifies `i` elements by the value that adds `i` elements and `x`."
   ([^SegmentTree s i x] (add! s i x +))
   ([^SegmentTree s i x add]
-   (let [i (dec (+ i (.size s)))]
-     (aset (.seg s) i (+ x (aget (.seg s) i)))
-     (loop [i i]
+   (let [bottom-i (dec (+ i (.size s)))]
+     (aset (.seg s) bottom-i (+ x (aget (.seg s) bottom-i)))
+     (loop [i bottom-i]
        (if (<= i 0)
          s
          (let [p (parent i)
@@ -59,14 +59,20 @@
            (aset (.seg s) p (add l r))
            (recur p)))))))
 
+(defn- cross? [a b r l]
+  (or (<= r a) (<= b l)))
+
+(defn- include? [a b r l]
+  (and (<= a l) (<= r b)))
+
 (defn walk
   "Traverse the segment tree `s` with range [`a`,`b`) (0-based,
   half-close-half-open) and identity `ident` while applying `f`."
   [^SegmentTree s a b ident f]
   (letfn [(doit [l r k]
-            (if (or (<= r a) (<= b l))
+            (if (cross? a b r l)
               ident
-              (if (and (<= a l) (<= r b))
+              (if (include? a b r l)
                 (aget (.seg s) k)
                 (let [m (quot (+ l r) 2)]
                   (f (doit l m (left k)) (doit m r (right k)))))))]
