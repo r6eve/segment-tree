@@ -11,11 +11,11 @@
 
 (deftest update!-test
   (let [z 2147483647 ; 2^31 - 1
-        s ^SegmentTree (segment-tree/make 4 z)]
+        s (segment-tree/make 4 z)]
     (doseq [[i x] (map-indexed vector [5 3 7 9 1 4 6 2])]
       (segment-tree/update! s i x))
     (is (= [1 1 z 3 1 z z 3 7 1 2 z z z z 5 3 7 9 1 4 6 2 z z z z z z z z]
-           (vec (.seg s))))))
+           (vec (.seg ^SegmentTree s))))))
 
 ;; index:
 ;;        |-----------------------0-----------------------|
@@ -89,11 +89,11 @@
 
 (deftest add!-test
   (let [z 0
-        s ^SegmentTree (segment-tree/make 3 z)]
+        s (segment-tree/make 3 z)]
     (doseq [[i x] (map-indexed vector [1 2 3])]
       (segment-tree/add! s i x))
     (is (= [6 6 z 3 3 z z 1 2 3 z z z z z]
-           (vec (.seg s))))
+           (vec (.seg ^SegmentTree s))))
     (is (= 3 (segment-tree/sum s 0 2)))
     (is (= 2 (segment-tree/sum s 1 2)))
     (is (= 5 (segment-tree/sum s 1 3)))
