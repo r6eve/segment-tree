@@ -45,7 +45,7 @@
 
 (deftest find-min-test
   (let [z 2147483647
-        s ^SegmentTree (segment-tree/make 4 z)]
+        s (segment-tree/make 4 z)]
     (doseq [[i x] (map-indexed vector [5 3 7 9 1 4 6 2])]
       (segment-tree/update! s i x))
     (is (= 5 (segment-tree/find-min s 0 1)))
@@ -61,7 +61,7 @@
 
 (deftest sum-test
   (let [z 2147483647
-        s ^SegmentTree (segment-tree/make 4 z)]
+        s (segment-tree/make 4 z)]
     (doseq [[i x] (map-indexed vector [5 3 7 9 1 4 6 2])]
       (segment-tree/update! s i x))
     (is (= 5 (segment-tree/sum s 0 1)))
