@@ -28,8 +28,9 @@ Segment tree is a tree that TODO:
 Make a segment tree.
 
 ```clojure
-(let [z 2147483647 ; 2^31 - 1
-      s (segment-tree/make 4 z)]
+(def s
+  (let [z 2147483647] ; 2^31 - 1
+    (make 4 z)))
 ```
 
 ```
@@ -69,6 +70,7 @@ Find a minimum element in the given range (0-based half-close-half-open).
 ```clojure
 (segment-tree/find-min s 0 1) ; 5
 (segment-tree/find-min s 0 2) ; 3
+(segment-tree/find-min s 0 3) ; 3
 (segment-tree/find-min s 0 4) ; 3
 (segment-tree/find-min s 0 8) ; 1
 (segment-tree/find-min s 0 16) ; 1
@@ -86,12 +88,42 @@ value:
 range:
 [0,1)  |--| 5
 [0,2)  |-----| 3
+[0,3)  |--------| 3
 [0,4)  |-----------| 3
 [0,8)  |-----------------------| 1
 [0,16) |-----------------------------------------------| 1
 [5,7)                 |-----| 4
 ```
 
+Sum the minimum element in the given range.
+
+```clojure
+(segment-tree/sum s 0 1) ; 5
+(segment-tree/sum s 0 2) ; 3
+(segment-tree/sum s 0 3) ; 10
+(segment-tree/sum s 0 4) ; 3
+(segment-tree/sum s 0 8) ; 1
+(segment-tree/sum s 0 16) ; 1
+(segment-tree/sum s 5 7) ; 10
+```
+
+```
+value:
+       |-----------------------1-----------------------|
+       |-----------1-----------|-----------z-----------|
+       |-----3-----|-----1-----|-----z-----|-----z-----|
+       |--3--|--7--|--1--|--2--|--z--|--z--|--z--|--z--|
+       | 5| 3| 7| 9| 1| 4| 6| 2| z| z| z| z| z| z| z| z|
+
+range:
+[0,1)  |--| 5
+[0,2)  |-----| 3
+[0,3)  |---------| 10
+[0,4)  |-----------| 3
+[0,8)  |-----------------------| 1
+[0,16) |-----------------------------------------------| 1
+[5,7)                 |-----| 10
+```
 
 Refer to the docstrings for more documentation, and to the tests for more examples.
 
