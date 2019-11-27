@@ -85,7 +85,7 @@
    (walk s a b (.init s) min')))
 
 (defn sum
-  "Sums probably the minimum elements in the range [`a`,`b`)."
+  "Sums the minimum elements in the range [`a`,`b`)."
   ([^SegmentTree s a b] (sum s a b +))
   ([^SegmentTree s a b add]
    (walk s a b 0 add)))
