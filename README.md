@@ -29,6 +29,8 @@ Leiningen/Boot:
 Make a segment tree.
 
 ```clojure
+(require '[segment-tree.core :as segment-tree])
+
 (def s
   (let [z 2147483647] ; 2^31 - 1
     (make 4 z)))
