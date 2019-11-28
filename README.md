@@ -10,7 +10,7 @@ interval.
 
 ## Installation
 
-This library will be released on [Clojars][].
+This library is released on [Clojars][].
 
 Clojure CLI/deps.edn:
 

@@ -1,4 +1,4 @@
-(defproject segment-tree "0.1.0-SNAPSHOT"
+(defproject segment-tree "0.1.0"
   :description "Library designed to manipulate segment tree."
   :url "https://github.com/r6eve/segment-tree"
   :license {:name "Boost Software License - Version 1.0"
