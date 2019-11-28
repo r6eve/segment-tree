@@ -66,7 +66,7 @@
   (and (<= a l) (<= r b)))
 
 (defn walk
-  "Traverse the segment tree `s` with range [`a`,`b`) (0-based,
+  "Traverse the segment tree `s` with interval [`a`,`b`) (0-based,
   half-close-half-open) and identity `ident` while applying `f`."
   [^SegmentTree s a b ident f]
   (letfn [(doit [l r k]
@@ -79,13 +79,13 @@
     (doit 0 (.size s) 0)))
 
 (defn find-min
-  "Returns a minimum element in the range [`a`,`b`)."
+  "Returns a minimum element in the interval [`a`,`b`)."
   ([^SegmentTree s a b] (find-min s a b min))
   ([^SegmentTree s a b min']
    (walk s a b (.init s) min')))
 
 (defn sum
-  "Sums the minimum elements in the range [`a`,`b`)."
+  "Sums the minimum elements in the interval [`a`,`b`)."
   ([^SegmentTree s a b] (sum s a b +))
   ([^SegmentTree s a b add]
    (walk s a b 0 add)))

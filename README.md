@@ -5,6 +5,9 @@ segment-tree
 
 A Clojure library designed to manipulate [segment tree][].
 
+Segment tree is useful to quickly search a specific element in the given
+interval.
+
 ## Installation
 
 This library will be released on [Clojars][].
@@ -22,8 +25,6 @@ Leiningen/Boot:
 ```
 
 ## Usage
-
-Segment tree is a tree that TODO:
 
 Make a segment tree.
 
@@ -65,7 +66,7 @@ value:
        | 5| 3| 7| 9| 1| 4| 6| 2| z| z| z| z| z| z| z| z|
 ```
 
-Find a minimum element in the given range (0-based half-close-half-open).
+Find a minimum element in the given interval (0-based half-close-half-open).
 
 ```clojure
 (segment-tree/find-min s 0 1) ; 5
@@ -85,7 +86,7 @@ value:
        |--3--|--7--|--1--|--2--|--z--|--z--|--z--|--z--|
        | 5| 3| 7| 9| 1| 4| 6| 2| z| z| z| z| z| z| z| z|
 
-range:
+interval:
 [0,1)  |--| 5
 [0,2)  |-----| 3
 [0,3)  |--------| 3
@@ -95,7 +96,7 @@ range:
 [5,7)                 |-----| 4
 ```
 
-Sum the minimum element in the given range.
+Sum the minimum element in the given interval.
 
 ```clojure
 (segment-tree/sum s 0 1) ; 5
@@ -115,7 +116,7 @@ value:
        |--3--|--7--|--1--|--2--|--z--|--z--|--z--|--z--|
        | 5| 3| 7| 9| 1| 4| 6| 2| z| z| z| z| z| z| z| z|
 
-range:
+interval:
 [0,1)  |--| 5
 [0,2)  |-----| 3
 [0,3)  |---------| 10
