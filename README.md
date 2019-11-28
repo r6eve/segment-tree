@@ -33,7 +33,7 @@ Make a segment tree.
 
 (def s
   (let [z 2147483647] ; 2^31 - 1
-    (make 4 z)))
+    (segment-tree/make 4 z)))
 ```
 
 ```
