@@ -37,7 +37,7 @@
     (->SegmentTree size init seg)))
 
 (defn update!
-  "Replace `i` elements by `x`."
+  "Replaces `i` elements by `x`."
   ([^SegmentTree s i x] (update! s i x min))
   ([^SegmentTree s i x min']
    (let [bottom-i (dec (+ i (.size s)))]
@@ -73,7 +73,7 @@
   (and (<= a l) (<= r b)))
 
 (defn walk
-  "Traverse the segment tree `s` with interval [`a`,`b`) (0-based,
+  "Traverses the segment tree `s` with interval [`a`,`b`) (0-based,
   half-close-half-open) and identity `ident` while applying `f`."
   [^SegmentTree s a b ident f]
   (letfn [(doit [l r k]
