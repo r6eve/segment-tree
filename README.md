@@ -2,6 +2,7 @@ segment-tree
 ============
 [![Build Status][]][Build Results]
 [![Codecov Status][]][Codecov Results]
+[![Clojars Status][]][Clojars Results]
 
 A Clojure library designed to manipulate [segment tree][].
 
@@ -138,5 +139,7 @@ Copyright © 2019 r6eve
 [Build Results]: https://github.com/r6eve/segment-tree/actions
 [Codecov Status]: https://codecov.io/github/r6eve/segment-tree/coverage.svg?branch=master
 [Codecov Results]: https://codecov.io/github/r6eve/segment-tree?branch=master
+[Clojars Status]: https://img.shields.io/clojars/v/segment-tree.svg
+[Clojars Results]: https://clojars.org/segment-tree
 [segment tree]: https://www.slideshare.net/iwiwi/ss-3578491/33
 [Clojars]: https://clojars.org/segment-tree
