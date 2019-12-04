@@ -74,7 +74,7 @@
 
 (defn walk
   "Traverses the segment tree `s` with interval [`a`,`b`) (0-based,
-  half-close-half-open) and identity `ident` while applying `f`."
+  left-closed, right-open) and identity `ident` while applying `f`."
   [^SegmentTree s a b ident f]
   (letfn [(doit [l r k]
             (if (cross? a b r l)

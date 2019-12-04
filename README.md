@@ -69,7 +69,7 @@ value:
        | 5| 3| 7| 9| 1| 4| 6| 2| z| z| z| z| z| z| z| z|
 ```
 
-Find a minimum element in the given interval (0-based half-close-half-open).
+Find a minimum element in the given interval (0-based, left-closed, right-open).
 
 ```clojure
 (segment-tree/find-min s 0 1) ; 5
