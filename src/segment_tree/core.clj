@@ -26,7 +26,7 @@
       acc
       (recur (* x x)
              (quot n 2)
-             (long (cond-> acc (= 1 (mod n 2)) (* x)))))))
+             (long (cond-> acc (odd? n) (* x)))))))
 
 (defn make
   "Returns an instance that stands for segment tree. This function takes two
